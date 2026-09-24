@@ -1,0 +1,83 @@
+:root {
+  --cream: #fdf7f1;
+  --blush: #f7d3d8;
+  --rose: #d95f7b;
+  --rose-dark: #b8435f;
+  --ink: #4a2b33;
+  --green: #4f6f3d;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "DM Sans", system-ui, sans-serif;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow-x: hidden;
+}
+/* soft blush corner, the only big pink moment */
+body::before {
+  content: "";
+  position: fixed; inset: auto -20vmin -20vmin auto;
+  width: 60vmin; height: 60vmin; border-radius: 50%;
+  background: var(--blush); z-index: 0;
+}
+.screen {
+  display: none;
+  position: relative; z-index: 1;
+  text-align: center;
+  max-width: 560px; width: 100%;
+  flex-direction: column; align-items: center; gap: 28px;
+}
+.screen.active { display: flex; animation: pop .35s ease-out; }
+@keyframes pop { from { transform: scale(.96); opacity: 0; } to { transform: none; opacity: 1; } }
+
+h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 8vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+h1 .pink { color: var(--rose); }
+p.sub { font-size: 1.05rem; color: var(--green); font-weight: 700; }
+p.msg { font-size: 1.15rem; line-height: 1.5; max-width: 34ch; }
+
+.buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+button {
+  font: inherit; font-weight: 700; font-size: 1.1rem;
+  padding: 14px 34px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--rose); transition: transform .12s, background .12s;
+}
+button:hover { transform: translateY(-2px); }
+button:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+.yes { background: var(--rose); color: #fff; }
+.yes:hover { background: var(--rose-dark); }
+.no { background: transparent; color: var(--rose-dark); }
+
+/* image slot: shows a dashed placeholder until you add a real image */
+.frame {
+  position: relative;
+  width: min(280px, 70vw); aspect-ratio: 1;
+  border-radius: 24px; border: 2px dashed var(--rose);
+  background: var(--blush);
+  display: grid; place-items: center;
+  font-size: .95rem; color: var(--rose-dark);
+  overflow: hidden;
+}
+.frame img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover;
+}
+.frame:has(img.loaded) { border-style: solid; }
+
+canvas#confetti {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .screen.active { animation: none; }
+  button:hover { transform: none; }
+}

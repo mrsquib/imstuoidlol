@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hey :)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- First Ask -->
+<section class="screen active" id="ask">
+  <h1>I pick you.<br><span class="pink">Two</span> go to HOCO?</h1>
+  <p class="sub">(you pick two, i pick you type shi yk [i'm so funny hahahahahah] oh also lmk what you end up picking cuz i cant see the answers lol)</p>
+  <div class="buttons">
+    <button class="yes" data-go="sure1">Yes</button>
+    <button class="no" data-go="alrighty">No</button>
+  </div>
+</section>
+
+<!-- Second ask -->
+<section class="screen" id="sure1">
+  <h1>OH?! uh, you sure?</h1>
+  <div class="buttons">
+    <button class="yes" data-go="sure2">Yes</button>
+    <button class="no" data-go="alrighty">No</button>
+  </div>
+</section>
+
+<!-- Third ask -->
+<section class="screen" id="sure2">
+  <h1>Okay but, are you really <span class="pink">REALLY</span> sure?</h1>
+  <div class="buttons">
+    <button class="yes" data-go="yay">Yes</button>
+    <button class="no" data-go="alrighty">No</button>
+  </div>
+</section>
+
+<!-- No ending -->
+<section class="screen" id="alrighty">
+  <h1>Alrighty!!!</h1>
+  <div class="frame">
+    Your image here
+    <!-- Stupid ahhh image lol -->
+    <img src="images/no.png" alt="" onload="this.classList.add('loaded')" onerror="this.remove()">
+  </div>
+</section>
+
+<!-- Yes ending -->
+<section class="screen" id="yay">
+  <h1>YAY, uhmmmmmm okay :D.</h1>
+  <div class="frame">
+    Your image here
+    <!-- another stupid image -->
+    <img src="images/yes.png" alt="" onload="this.classList.add('loaded')" onerror="this.remove()">
+  </div>
+  <p class="msg">Um lmk what you did pick though cuz i cant see your answers lol. my bad, and sorry for yk</p>
+</section>
+
+<canvas id="confetti"></canvas>
+
+<script src="js/script.js"></script>
+</body>
+</html>
